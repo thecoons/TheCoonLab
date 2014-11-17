@@ -3,28 +3,34 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>Clean Blog</title>
+<title>Clean Blog</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/clean-blog.min.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!-- Custom Fonts -->
+<link
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic'
+	rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -34,31 +40,99 @@
 <body ng-app="TheCoonLab">
 	<div ng-view></div>
 
-    
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="js/clean-blog.min.js"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 	<script src="https://code.angularjs.org/1.2.26/angular-route.min.js"></script>
-	
+
 	<script>
 		var app = angular.module('TheCoonLab',['ngRoute']);
 		app.config(function($routeProvider){
 			$routeProvider
-			.when('/',{templateUrl: 'partial/home.html'})
+			.when('/',{templateUrl: 'partial/home.html'
+				,controller: 'PostCtrl'})
 			.when('/post',{templateUrl: 'partial/post.html'})
+			.when('/contact',{templateUrl: 'partial/contact.html'})
+			.when('/about',{templateUrl: 'partial/about.html'})
 			.otherwise({redirectTo : '/'});
-		})
+		});
 		
+		app.factory('PostFactory',function(){
+			var factory = {
+					posts: false,
+					
+					getPosts : function(){
+						return factory.posts;
+					},
+					
+					getPost: function(id){
+						var post = {};
+						angular.forEach(factory.posts, function(value,key){
+							if(value.id == id){
+								post = value;
+							}
+						});
+						return post;
+					}
+					
+				return factory;
+					
+			}
+		
+		app.controller('PostCtrl',function ($scope){
+			$scope.posts = [
+  {
+    "content": "Ullamco anim minim irure do dolor aliquip proident consequat velit consectetur mollit laborum eiusmod sint. Voluptate commodo nisi velit amet excepteur aliquip pariatur est ut nulla. Ea quis aliqua voluptate elit minim esse velit laborum qui in. Consectetur voluptate duis fugiat et quis ut laborum do proident in excepteur. Proident occaecat magna adipisicing occaecat aliqua ea commodo esse officia ad reprehenderit. Tempor aliqua Lorem dolor consectetur. Aliqua ullamco veniam tempor et adipisicing elit deserunt deserunt consequat adipisicing ut consequat.",
+    "title": "Norton",
+    "picture": "http://placehold.it/1300x400",
+    "index": 0
+  },
+  {
+    "content": "Consequat occaecat velit labore magna adipisicing velit. Culpa sit exercitation elit fugiat. In est cupidatat aute anim. Culpa ad aliqua mollit occaecat eu sit est aliqua magna aute quis aute proident quis. Culpa est et mollit anim id ullamco cillum magna mollit culpa irure. Cupidatat reprehenderit veniam aliquip magna veniam sint sit exercitation consectetur ullamco voluptate deserunt aute. Fugiat dolor et eiusmod sit veniam adipisicing.",
+    "title": "Daniel",
+    "picture": "http://placehold.it/1300x400",
+    "index": 1
+  },
+  {
+    "content": "Mollit ad amet ullamco ex. Labore Lorem nulla sint officia ea esse enim exercitation commodo est veniam. Amet sint aliquip ex mollit id fugiat fugiat. Deserunt cupidatat aliqua ex laborum sint. Nostrud laborum nulla deserunt non commodo in magna eiusmod eu fugiat dolor. Dolor sit reprehenderit consectetur deserunt dolore ea eu amet qui cupidatat est labore incididunt esse. Magna deserunt mollit fugiat aliqua ex dolore eiusmod fugiat ipsum dolor consectetur officia qui magna.",
+    "title": "Barry",
+    "picture": "http://placehold.it/1300x400",
+    "index": 2
+  },
+  {
+    "content": "Dolor magna ipsum veniam nulla nulla duis officia aliquip deserunt commodo. Laboris ipsum in proident ad sit. Qui reprehenderit sint amet amet enim aliqua duis ut dolor exercitation voluptate commodo cillum occaecat. Exercitation laboris aliquip Lorem dolore. Labore veniam commodo labore aliquip amet ullamco. Aute voluptate officia occaecat est amet ad labore. Ea Lorem labore reprehenderit sit.",
+    "title": "Donaldson",
+    "picture": "http://placehold.it/1300x400",
+    "index": 3
+  },
+  {
+    "content": "Consequat eu eiusmod ea cillum velit adipisicing laborum irure nisi qui cillum pariatur occaecat. Ea velit amet aliqua elit sint incididunt veniam aliqua aliquip. Aute culpa laboris commodo cupidatat ipsum irure laborum nisi. Laboris nisi dolor ea amet. Incididunt et officia ipsum esse irure. Irure non enim sit est reprehenderit dolore deserunt sunt. Amet sunt nulla officia deserunt ea dolore elit officia proident labore deserunt ex veniam.",
+    "title": "Owen",
+    "picture": "http://placehold.it/1300x400",
+    "index": 4
+  },
+  {
+    "content": "Cillum duis in quis voluptate aliqua laboris laborum id in est voluptate. Aliquip elit ad occaecat sit aliquip. Duis consectetur incididunt proident anim proident enim sint consectetur qui aliqua sunt commodo occaecat anim. Amet ea in anim irure eiusmod deserunt pariatur reprehenderit sit pariatur voluptate nisi magna enim. Adipisicing ex nisi commodo ipsum reprehenderit esse. Qui aliqua excepteur culpa et laboris anim eiusmod et elit. Magna qui aliquip commodo ipsum amet elit tempor proident.",
+    "title": "Alford",
+    "picture": "http://placehold.it/1300x400",
+    "index": 5
+  }
+]
+		});
+		
+		});
 	</script>
-	
+
 </body>
 
 </html>
