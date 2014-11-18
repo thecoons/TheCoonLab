@@ -56,81 +56,134 @@
 	<script src="https://code.angularjs.org/1.2.26/angular-route.min.js"></script>
 
 	<script>
-		var app = angular.module('TheCoonLab',['ngRoute']);
-		app.config(function($routeProvider){
-			$routeProvider
-			.when('/',{templateUrl: 'partial/home.html'
-				,controller: 'PostCtrl'})
-			.when('/post',{templateUrl: 'partial/post.html'})
-			.when('/contact',{templateUrl: 'partial/contact.html'})
-			.when('/about',{templateUrl: 'partial/about.html'})
-			.otherwise({redirectTo : '/'});
+		var app = angular.module('TheCoonLab', [ 'ngRoute' ]);
+		app.config(function($routeProvider) {
+			$routeProvider.when('/', {
+				templateUrl : 'partial/home.html',
+					controller : 'PostCtrl'
+			}).when('/post', {
+				templateUrl : 'partial/post.html'
+			}).when('/contact', {
+				templateUrl : 'partial/contact.html'
+			}).when('/about', {
+				templateUrl : 'partial/about.html'
+			}).otherwise({
+				redirectTo : '/'
+			});
 		});
-		
-		app.factory('PostFactory',function(){
+
+		app.factory('PostFactory', function() {
 			var factory = {
-					posts: false,
-					
-					getPosts : function(){
-						return factory.posts;
-					},
-					
-					getPost: function(id){
-						var post = {};
-						angular.forEach(factory.posts, function(value,key){
-							if(value.id == id){
-								post = value;
-							}
-						});
-						return post;
-					}
-					
-				return factory;
-					
+				posts : [
+				         {
+				        	    "_id": "546b24bd9aef569d1a2dc0ea",
+				        	    "index": 0,
+				        	    "titre": "occaecat duis velit dolor ullamco",
+				        	    "soustitre": "fugiat sint commodo in cillum pariatur voluptate",
+				        	    "picture": "http://placehold.it/1400x400",
+				        	    "name": {
+				        	      "first": "Melissa",
+				        	      "last": "Vasquez"
+				        	    },
+				        	    "company": "COMVOY",
+				        	    "email": "melissa.vasquez@comvoy.io",
+				        	    "content": "Occaecat dolore in aute deserunt cupidatat ea aliqua duis cillum sunt qui."
+				        	  },
+				        	  {
+				        	    "_id": "546b24bd73cf1a19c2649e40",
+				        	    "index": 1,
+				        	    "titre": "eiusmod elit commodo magna occaecat",
+				        	    "soustitre": "aute enim ipsum mollit sit mollit nostrud",
+				        	    "picture": "http://placehold.it/1400x400",
+				        	    "name": {
+				        	      "first": "Coleen",
+				        	      "last": "Whitaker"
+				        	    },
+				        	    "company": "FISHLAND",
+				        	    "email": "coleen.whitaker@fishland.com",
+				        	    "content": "Incididunt amet eu voluptate minim excepteur reprehenderit adipisicing ut officia aliquip ipsum laborum ullamco sit."
+				        	  },
+				        	  {
+				        	    "_id": "546b24bd45379837bc4a174b",
+				        	    "index": 2,
+				        	    "titre": "cupidatat anim magna officia commodo",
+				        	    "soustitre": "non nisi est adipisicing dolor amet proident",
+				        	    "picture": "http://placehold.it/1400x400",
+				        	    "name": {
+				        	      "first": "Barbara",
+				        	      "last": "Finch"
+				        	    },
+				        	    "company": "ILLUMITY",
+				        	    "email": "barbara.finch@illumity.net",
+				        	    "content": "Velit ea voluptate anim labore fugiat Lorem elit eu eiusmod est aliquip non."
+				        	  },
+				        	  {
+				        	    "_id": "546b24bd0c499f7f04b656fa",
+				        	    "index": 3,
+				        	    "titre": "qui proident nisi ea reprehenderit",
+				        	    "soustitre": "qui deserunt occaecat tempor est tempor nisi",
+				        	    "picture": "http://placehold.it/1400x400",
+				        	    "name": {
+				        	      "first": "Marjorie",
+				        	      "last": "Donovan"
+				        	    },
+				        	    "company": "NIPAZ",
+				        	    "email": "marjorie.donovan@nipaz.biz",
+				        	    "content": "Anim et laboris laborum exercitation dolor id minim deserunt aliquip nostrud id."
+				        	  },
+				        	  {
+				        	    "_id": "546b24bd490e2e9361f2229f",
+				        	    "index": 4,
+				        	    "titre": "et sunt nulla veniam ad",
+				        	    "soustitre": "est et aliqua eu et adipisicing excepteur",
+				        	    "picture": "http://placehold.it/1400x400",
+				        	    "name": {
+				        	      "first": "Gilmore",
+				        	      "last": "Lamb"
+				        	    },
+				        	    "company": "PRINTSPAN",
+				        	    "email": "gilmore.lamb@printspan.info",
+				        	    "content": "Laborum ad et deserunt enim Lorem ullamco esse laboris do veniam."
+				        	  },
+				        	  {
+				        	    "_id": "546b24bd3ad452fc8c9259f8",
+				        	    "index": 5,
+				        	    "titre": "id officia id dolor ad",
+				        	    "soustitre": "non ex cupidatat mollit veniam ea nulla",
+				        	    "picture": "http://placehold.it/1400x400",
+				        	    "name": {
+				        	      "first": "Leonard",
+				        	      "last": "Norris"
+				        	    },
+				        	    "company": "DARWINIUM",
+				        	    "email": "leonard.norris@darwinium.org",
+				        	    "content": "Nulla incididunt aliqua ea amet sit elit ut labore."
+				        	  }
+				        	],
+
+				getPosts : function() {
+					return factory.posts;
+				},
+
+				getPost : function(id) {
+					var post = {};
+					angular.forEach(factory.posts, function(value, key) {
+						if (value.id == id) {
+							post = value;
+						}
+					});
+					return post;
+				},
+
 			}
-		
-		app.controller('PostCtrl',function ($scope){
-			$scope.posts = [
-  {
-    "content": "Ullamco anim minim irure do dolor aliquip proident consequat velit consectetur mollit laborum eiusmod sint. Voluptate commodo nisi velit amet excepteur aliquip pariatur est ut nulla. Ea quis aliqua voluptate elit minim esse velit laborum qui in. Consectetur voluptate duis fugiat et quis ut laborum do proident in excepteur. Proident occaecat magna adipisicing occaecat aliqua ea commodo esse officia ad reprehenderit. Tempor aliqua Lorem dolor consectetur. Aliqua ullamco veniam tempor et adipisicing elit deserunt deserunt consequat adipisicing ut consequat.",
-    "title": "Norton",
-    "picture": "http://placehold.it/1300x400",
-    "index": 0
-  },
-  {
-    "content": "Consequat occaecat velit labore magna adipisicing velit. Culpa sit exercitation elit fugiat. In est cupidatat aute anim. Culpa ad aliqua mollit occaecat eu sit est aliqua magna aute quis aute proident quis. Culpa est et mollit anim id ullamco cillum magna mollit culpa irure. Cupidatat reprehenderit veniam aliquip magna veniam sint sit exercitation consectetur ullamco voluptate deserunt aute. Fugiat dolor et eiusmod sit veniam adipisicing.",
-    "title": "Daniel",
-    "picture": "http://placehold.it/1300x400",
-    "index": 1
-  },
-  {
-    "content": "Mollit ad amet ullamco ex. Labore Lorem nulla sint officia ea esse enim exercitation commodo est veniam. Amet sint aliquip ex mollit id fugiat fugiat. Deserunt cupidatat aliqua ex laborum sint. Nostrud laborum nulla deserunt non commodo in magna eiusmod eu fugiat dolor. Dolor sit reprehenderit consectetur deserunt dolore ea eu amet qui cupidatat est labore incididunt esse. Magna deserunt mollit fugiat aliqua ex dolore eiusmod fugiat ipsum dolor consectetur officia qui magna.",
-    "title": "Barry",
-    "picture": "http://placehold.it/1300x400",
-    "index": 2
-  },
-  {
-    "content": "Dolor magna ipsum veniam nulla nulla duis officia aliquip deserunt commodo. Laboris ipsum in proident ad sit. Qui reprehenderit sint amet amet enim aliqua duis ut dolor exercitation voluptate commodo cillum occaecat. Exercitation laboris aliquip Lorem dolore. Labore veniam commodo labore aliquip amet ullamco. Aute voluptate officia occaecat est amet ad labore. Ea Lorem labore reprehenderit sit.",
-    "title": "Donaldson",
-    "picture": "http://placehold.it/1300x400",
-    "index": 3
-  },
-  {
-    "content": "Consequat eu eiusmod ea cillum velit adipisicing laborum irure nisi qui cillum pariatur occaecat. Ea velit amet aliqua elit sint incididunt veniam aliqua aliquip. Aute culpa laboris commodo cupidatat ipsum irure laborum nisi. Laboris nisi dolor ea amet. Incididunt et officia ipsum esse irure. Irure non enim sit est reprehenderit dolore deserunt sunt. Amet sunt nulla officia deserunt ea dolore elit officia proident labore deserunt ex veniam.",
-    "title": "Owen",
-    "picture": "http://placehold.it/1300x400",
-    "index": 4
-  },
-  {
-    "content": "Cillum duis in quis voluptate aliqua laboris laborum id in est voluptate. Aliquip elit ad occaecat sit aliquip. Duis consectetur incididunt proident anim proident enim sint consectetur qui aliqua sunt commodo occaecat anim. Amet ea in anim irure eiusmod deserunt pariatur reprehenderit sit pariatur voluptate nisi magna enim. Adipisicing ex nisi commodo ipsum reprehenderit esse. Qui aliqua excepteur culpa et laboris anim eiusmod et elit. Magna qui aliquip commodo ipsum amet elit tempor proident.",
-    "title": "Alford",
-    "picture": "http://placehold.it/1300x400",
-    "index": 5
-  }
-]
+			return factory;
+
 		});
+
+		app.controller('PostCtrl',function ($scope,PostFactory){
+			$scope.posts=PostFactory.getPosts();
 		
-		});
+		}); 
 	</script>
 
 </body>
