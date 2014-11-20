@@ -50,10 +50,6 @@
 	<!-- Header -->
 	<div ng-controller="TemplateCtrl">
 		<div class="animated zoom" ng-include="template.url" ></div>
-		<select ng-model="template" ng-options="t.url for t in templates">
-   					<option value="">(blank)</option>
-  				</select>
-  				{{template.url}}
 	</div>
 	
 	<!-- View -->
@@ -194,9 +190,8 @@
 		    return factory;
 		});
 
-		app.controller('HomeCtrl',function ($scope,PostFactory,TemplatesFactory){
+		app.controller('HomeCtrl',function ($scope,PostFactory){
 			$scope.posts=PostFactory.getPosts();
-			$scope.templates=TemplatesFactory.getTemplates();
 		
 		}); 
 		
@@ -206,6 +201,7 @@
 		
 		app.controller('TemplateCtrl',function($scope,PostFactory,TemplatesFactory){
 			$scope.templates = TemplatesFactory.getTemplates();
+			$scope.template = $scope.templates[0];
 		})
 	</script>
 
