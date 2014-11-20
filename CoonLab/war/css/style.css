@@ -1,7 +1,0 @@
-.animated.ng-enter , .animated.ng-leave{
-	-webkit-animation-duration: 1s;
-	-webkit-animation-fill-mode : both;
-}
-
-.bounce.ng-enter{ -webkit-animation-name: bounceOutUp;	}
-.bounce.ng-leave{ -webkit-animation-name: bounceInRight;	}
