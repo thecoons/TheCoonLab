@@ -17,6 +17,12 @@
 <!-- Custom CSS -->
 <link href="css/clean-blog.min.css" rel="stylesheet">
 
+<!-- Animated.css -->
+<link href="css/animate.css" rel="stylesheet">
+
+<!-- Style.css -->
+<link href="css/style.css" rel="stylesheet">
+
 <!-- Custom Fonts -->
 <link
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
@@ -39,11 +45,10 @@
 
 <body ng-app="TheCoonLab">
 	<!-- Navigation -->
-	<div ng-include="'partial/nav.html'"></div>
+	<div ng-include="'partial/nav.html'" ></div>
 	
 	<!-- View -->
 	<div ng-view></div>
-	
 	<!-- Footer -->
 	<div ng-include="'partial/footer.html'"></div>
 
@@ -60,9 +65,10 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 	<script src="https://code.angularjs.org/1.2.26/angular-route.min.js"></script>
+	<script src="https://code.angularjs.org/1.2.26/angular-animate.min.js"></script>
 
 	<script>
-		var app = angular.module('TheCoonLab', [ 'ngRoute' ]);
+		var app = angular.module('TheCoonLab', [ 'ngRoute','ngAnimate' ]);
 		app.config(function($routeProvider) {
 			$routeProvider.when('/', {
 				templateUrl : 'partial/home.html',
