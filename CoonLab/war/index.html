@@ -49,11 +49,13 @@
 	
 	<!-- Header -->
 	<div ng-controller="TemplateCtrl">
+		
 		<div class="animated zoom" ng-include="template.url" ></div>
+		{{template}}
 	</div>
 	
 	<!-- View -->
-	<div ng-view></div>
+	<div ng-view ng-controller="TemplateCtrl"></div>
 	<!-- Footer -->
 	<div ng-include="'partial/footer.html'"></div>
 
@@ -183,9 +185,17 @@
 			var factory = {
 			        templates: [ { name: 'homeheader', url: 'partial/headerHome.html'},
 			    			      { name: 'postheader', url: 'partial/headerPost.html'} ],
+			    	template: { name: 'homeheader', url: 'partial/headerHome.html'},
 			    	getTemplates: function() {
 						return factory.templates;
 					},
+					getTemplate: function(){
+						return factory.template;
+					},
+					setTemplate: function(namee,urll){
+						
+						return { name: namee, url: urll};
+					}
 			    		    };
 		    return factory;
 		});
@@ -195,13 +205,20 @@
 		
 		}); 
 		
-		app.controller('PostCtrl',function($scope,PostFactory,$routeParams){
+		app.controller('PostCtrl',function($scope,PostFactory,$routeParams,TemplatesFactory){
 			$scope.post = PostFactory.getPost($routeParams.id);
+			$scope.templates = TemplatesFactory.getTemplates();
+			$scope.template = { name: 'homeheader', url: 'partial/headerHome.html'};
 		});
 		
 		app.controller('TemplateCtrl',function($scope,PostFactory,TemplatesFactory){
+			console.log(TemplatesFactory);
 			$scope.templates = TemplatesFactory.getTemplates();
-			$scope.template = $scope.templates[0];
+			$scope.template =  TemplatesFactory.template;
+			$scope.setTemplate = function(url){
+				TemplatesFactory.template.url = url;
+				return url;
+			};
 		})
 	</script>
 
