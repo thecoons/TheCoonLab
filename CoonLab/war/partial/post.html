@@ -1,6 +1,24 @@
-    <!-- Page Header -->
-    <div ng-include="'partial/headerPost.html'"></div>
 
+<!-- Header -->
+<div class="right">
+<header class="intro-header"
+	style="background-image: url('{{post.picture}}')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="post-heading">
+					<h1>{{post.titre}}</h1>
+					<h2 class="subheading">{{post.soustitre}}</h2>
+					<span class="meta">Posted by <a href="#">{{post.name.first
+							+ " " + post.name.last}}</a> on {{post.date | date : small}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+</div>
+<div class="left">
     <!-- Post Content -->
     <article>
         <div class="container">
@@ -12,3 +30,5 @@
         </div>
     </article>
 	<hr>
+	<div ng-include="'partial/footer.html'"></div>
+</div>

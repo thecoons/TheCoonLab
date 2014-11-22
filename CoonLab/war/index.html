@@ -43,21 +43,12 @@
 
 </head>
 
-<body ng-app="TheCoonLab">
-	<!-- Navigation -->
-	<div ng-include="'partial/nav.html'" ></div>
-	
-	<!-- Header -->
-	<div ng-controller="TemplateCtrl">
-		
-		<div class="animated zoom" ng-include="template.url" ></div>
-		{{template}}
-	</div>
-	
+<body ng-app="TheCoonLab" ng-controller="TemplateCtrl">
+
+    <div ng-include="'partial/nav.html'"></div>
 	<!-- View -->
-	<div ng-view ng-controller="TemplateCtrl"></div>
-	<!-- Footer -->
-	<div ng-include="'partial/footer.html'"></div>
+	<div  ng-view class="slide {{ui.direction}} "></div>
+
 
 
 	<!-- jQuery -->
@@ -75,14 +66,14 @@
 	<script src="https://code.angularjs.org/1.2.26/angular-animate.min.js"></script>
 
 	<script>
-		var app = angular.module('TheCoonLab', [ 'ngRoute','ngAnimate' ]);
+		var app = angular.module('TheCoonLab', [ 'ngRoute', 'ngAnimate' ]);
 		app.config(function($routeProvider) {
 			$routeProvider.when('/', {
 				templateUrl : 'partial/home.html',
-					controller : 'HomeCtrl'
+				controller : 'HomeCtrl'
 			}).when('/post/:id', {
 				templateUrl : 'partial/post.html',
-					controller : 'PostCtrl'
+				controller : 'PostCtrl'
 			}).when('/contact', {
 				templateUrl : 'partial/contact.html'
 			}).when('/about', {
@@ -92,134 +83,150 @@
 			});
 		});
 
-		app.factory('PostFactory', function() {
-			var factory = {
-				posts : [
-				         {
-				        	    "index": 0,
-				        	    "picture": "http://placehold.it/1400x400",
-				        	    "name": {
-				        	      "first": "Naomi",
-				        	      "last": "Mitchell"
-				        	    },
-				        	    "date": 1405972485717,
-				        	    "email": "naomi.mitchell@undefined.us",
-				        	    "titre": "incididunt adipisicing ea proident excepteur sint ex",
-				        	    "soustitre": "eiusmod ullamco consectetur nostrud aliquip consequat ad qui esse occaecat",
-				        	    "content": "Dolor elit sit velit ad laborum mollit. Ad reprehenderit veniam minim incididunt voluptate exercitation labore reprehenderit anim est. Dolor cillum aute deserunt cupidatat non sunt. Eu Lorem ullamco ex sint do fugiat qui ipsum quis elit commodo anim adipisicing adipisicing.\r\nEiusmod laborum minim in cillum aliqua. Sit incididunt laborum cillum consequat aliquip adipisicing cupidatat. Eiusmod cupidatat nulla cillum cillum Lorem minim adipisicing sunt consectetur dolore velit esse.\r\nCommodo excepteur sunt fugiat commodo anim. Eu commodo mollit adipisicing irure. Aute nisi est duis laborum labore quis irure commodo. Exercitation incididunt ullamco cillum non commodo duis sunt aute aliquip dolor ullamco cupidatat quis dolor. Tempor quis pariatur enim mollit duis elit aliquip laborum enim ipsum aliquip veniam. Culpa occaecat reprehenderit esse aliqua ad nulla aliqua tempor id. Aute ipsum deserunt minim officia non sint est incididunt ea anim mollit quis irure.\r\n"
-				        	  },
-				        	  {
-				        	    "index": 1,
-				        	    "picture": "http://placehold.it/1400x400",
-				        	    "name": {
-				        	      "first": "Perry",
-				        	      "last": "Griffith"
-				        	    },
-				        	    "date": 1399036927724,
-				        	    "email": "perry.griffith@undefined.co.uk",
-				        	    "titre": "magna aute cupidatat cillum voluptate anim consectetur",
-				        	    "soustitre": "nulla reprehenderit officia fugiat ullamco eiusmod fugiat deserunt non et",
-				        	    "content": "Ad excepteur esse cupidatat voluptate magna nostrud aliqua laborum labore commodo cupidatat dolore. Lorem quis irure officia consequat sunt reprehenderit in fugiat sunt cillum consequat consectetur nulla et. Aliquip velit qui quis incididunt exercitation quis nostrud incididunt labore elit non magna. Amet pariatur ullamco non aliqua laboris. Labore elit excepteur proident proident cupidatat veniam aliquip eiusmod.\r\nDo veniam ad elit laboris. Aute elit laborum proident excepteur exercitation aliqua anim amet fugiat aliqua tempor incididunt. Ipsum proident mollit proident veniam cupidatat fugiat mollit excepteur in nostrud veniam irure laborum minim. Adipisicing est ex nisi duis id. Sint consectetur occaecat eiusmod laborum quis velit officia deserunt labore aute. Velit esse minim eu qui veniam id.\r\nQui irure cupidatat Lorem Lorem nisi. Eiusmod occaecat sit qui anim mollit ad dolor. Nulla amet enim excepteur reprehenderit esse pariatur magna velit elit labore laborum officia enim. Aute aliquip sunt ipsum ipsum ad voluptate commodo anim aute esse aliqua. Velit aliqua eiusmod Lorem reprehenderit culpa mollit labore ut exercitation.\r\n"
-				        	  },
-				        	  {
-				        	    "index": 2,
-				        	    "picture": "http://placehold.it/1400x400",
-				        	    "name": {
-				        	      "first": "Webster",
-				        	      "last": "Bauer"
-				        	    },
-				        	    "date": 1399991897236,
-				        	    "email": "webster.bauer@undefined.biz",
-				        	    "titre": "excepteur officia dolore aliquip magna qui proident",
-				        	    "soustitre": "ex tempor ex reprehenderit est id proident nulla duis irure",
-				        	    "content": "Veniam est consectetur id anim non cillum velit cupidatat ipsum. Ad sit laborum ex eiusmod irure qui commodo adipisicing anim aliqua enim. Sint qui eiusmod voluptate mollit consectetur cupidatat non incididunt nulla mollit duis id elit. Irure quis ea cillum sunt elit culpa qui nisi deserunt sunt duis eu ex nulla. Nisi excepteur exercitation reprehenderit incididunt nostrud id anim magna ullamco aliquip proident eu tempor. Nisi est nostrud anim voluptate duis dolore ut dolore enim do reprehenderit fugiat.\r\nConsequat elit esse nisi consectetur excepteur eiusmod. Laboris voluptate pariatur nostrud dolore nisi adipisicing id mollit. Laborum adipisicing enim cillum ut id irure esse duis.\r\nEiusmod veniam ullamco irure laborum. Deserunt irure ad aliquip in officia commodo aliqua aliqua aliqua et. Sint ipsum velit eiusmod laborum nostrud ea id occaecat non enim deserunt exercitation magna. Adipisicing enim aliqua deserunt cillum aliquip amet ea fugiat. Ipsum culpa nulla cupidatat eiusmod aliqua et enim aliquip minim ad. Anim magna veniam veniam eu Lorem qui enim sit irure.\r\n"
-				        	  },
-				        	  {
-				        	    "index": 3,
-				        	    "picture": "http://placehold.it/1400x400",
-				        	    "name": {
-				        	      "first": "Joan",
-				        	      "last": "Dejesus"
-				        	    },
-				        	    "date": 1394429832977,
-				        	    "email": "joan.dejesus@undefined.io",
-				        	    "titre": "do tempor dolore sit excepteur eu cillum",
-				        	    "soustitre": "anim fugiat aliqua deserunt proident velit culpa ad commodo mollit",
-				        	    "content": "Eu fugiat duis anim Lorem magna voluptate adipisicing culpa eu excepteur. Pariatur eiusmod est et est voluptate anim laboris deserunt reprehenderit esse consequat deserunt. Pariatur amet laboris irure velit consequat qui eu do deserunt. Quis cupidatat deserunt et reprehenderit id aute pariatur minim ut.\r\nSit laborum adipisicing laborum ad nostrud est. Laboris dolore aute cillum exercitation adipisicing culpa. Magna nostrud ea id laborum ipsum Lorem ea eu proident sint ad nisi consectetur. Adipisicing sunt cillum fugiat nostrud id et elit in. Excepteur voluptate aliqua nulla velit et enim tempor ipsum dolor est. Ea ut commodo consequat culpa veniam adipisicing reprehenderit in voluptate id. Veniam qui labore sunt velit sunt irure anim aliqua amet nostrud.\r\nDo velit ea aute fugiat do cupidatat ipsum et veniam sit ex non tempor est. Sint mollit cillum minim ad tempor sit enim anim labore. Culpa cupidatat laborum dolor est quis. Ea occaecat ex voluptate adipisicing in velit pariatur commodo ut aliquip culpa amet.\r\n"
-				        	  },
-				        	  {
-				        	    "index": 4,
-				        	    "picture": "http://placehold.it/1400x400",
-				        	    "name": {
-				        	      "first": "Stark",
-				        	      "last": "Joseph"
-				        	    },
-				        	    "date": 1394327600565,
-				        	    "email": "stark.joseph@undefined.me",
-				        	    "titre": "quis amet tempor et aute aliqua cupidatat",
-				        	    "soustitre": "excepteur pariatur sunt culpa occaecat dolore ut irure proident enim",
-				        	    "content": "Mollit dolor incididunt veniam Lorem tempor qui. Ad Lorem ipsum laborum ut. Adipisicing mollit sint esse mollit officia reprehenderit do eiusmod. Ea occaecat consequat aliqua qui cupidatat nostrud ipsum ut cillum minim anim. In commodo culpa dolor cillum consequat eiusmod in officia incididunt occaecat. Consequat ad in mollit velit anim pariatur sit dolore Lorem nisi enim aute cillum.\r\nLabore sit labore officia consequat laboris culpa enim reprehenderit incididunt elit mollit Lorem. Adipisicing eiusmod consequat dolor aliquip tempor ex voluptate dolore sint. Irure enim excepteur tempor veniam amet non commodo labore fugiat labore. Pariatur anim excepteur aliqua do ex fugiat. Eiusmod eu commodo anim labore laboris deserunt ullamco anim velit consectetur ad irure tempor ipsum. Reprehenderit voluptate proident consequat cillum irure qui exercitation laboris mollit non non. Adipisicing nulla labore amet quis exercitation magna labore.\r\nLaborum consequat Lorem consequat dolore voluptate laborum sint ad. Ullamco id laboris nulla nostrud tempor aliqua et eiusmod dolor incididunt magna ut nisi. Mollit excepteur esse cupidatat pariatur dolore sit eu occaecat esse nulla sit. Esse incididunt aliqua duis sit aliqua quis ex elit eu sint veniam et in. Ad Lorem eiusmod esse eiusmod officia minim tempor laboris officia. Irure ea in ex mollit proident eiusmod.\r\n"
-				        	  }
-				        	],
+		app
+				.factory(
+						'PostFactory',
+						function() {
+							var factory = {
+								posts : [
+										{
+											"index" : 0,
+											"picture" : "http://placehold.it/1400x650",
+											"name" : {
+												"first" : "Naomi",
+												"last" : "Mitchell"
+											},
+											"date" : 1405972485717,
+											"email" : "naomi.mitchell@undefined.us",
+											"titre" : "incididunt adipisicing ea proident excepteur sint ex",
+											"soustitre" : "eiusmod ullamco consectetur nostrud aliquip consequat ad qui esse occaecat",
+											"content" : "Dolor elit sit velit ad laborum mollit. Ad reprehenderit veniam minim incididunt voluptate exercitation labore reprehenderit anim est. Dolor cillum aute deserunt cupidatat non sunt. Eu Lorem ullamco ex sint do fugiat qui ipsum quis elit commodo anim adipisicing adipisicing.\r\nEiusmod laborum minim in cillum aliqua. Sit incididunt laborum cillum consequat aliquip adipisicing cupidatat. Eiusmod cupidatat nulla cillum cillum Lorem minim adipisicing sunt consectetur dolore velit esse.\r\nCommodo excepteur sunt fugiat commodo anim. Eu commodo mollit adipisicing irure. Aute nisi est duis laborum labore quis irure commodo. Exercitation incididunt ullamco cillum non commodo duis sunt aute aliquip dolor ullamco cupidatat quis dolor. Tempor quis pariatur enim mollit duis elit aliquip laborum enim ipsum aliquip veniam. Culpa occaecat reprehenderit esse aliqua ad nulla aliqua tempor id. Aute ipsum deserunt minim officia non sint est incididunt ea anim mollit quis irure.\r\n"
+										},
+										{
+											"index" : 1,
+											"picture" : "http://placehold.it/1400x650",
+											"name" : {
+												"first" : "Perry",
+												"last" : "Griffith"
+											},
+											"date" : 1399036927724,
+											"email" : "perry.griffith@undefined.co.uk",
+											"titre" : "magna aute cupidatat cillum voluptate anim consectetur",
+											"soustitre" : "nulla reprehenderit officia fugiat ullamco eiusmod fugiat deserunt non et",
+											"content" : "Ad excepteur esse cupidatat voluptate magna nostrud aliqua laborum labore commodo cupidatat dolore. Lorem quis irure officia consequat sunt reprehenderit in fugiat sunt cillum consequat consectetur nulla et. Aliquip velit qui quis incididunt exercitation quis nostrud incididunt labore elit non magna. Amet pariatur ullamco non aliqua laboris. Labore elit excepteur proident proident cupidatat veniam aliquip eiusmod.\r\nDo veniam ad elit laboris. Aute elit laborum proident excepteur exercitation aliqua anim amet fugiat aliqua tempor incididunt. Ipsum proident mollit proident veniam cupidatat fugiat mollit excepteur in nostrud veniam irure laborum minim. Adipisicing est ex nisi duis id. Sint consectetur occaecat eiusmod laborum quis velit officia deserunt labore aute. Velit esse minim eu qui veniam id.\r\nQui irure cupidatat Lorem Lorem nisi. Eiusmod occaecat sit qui anim mollit ad dolor. Nulla amet enim excepteur reprehenderit esse pariatur magna velit elit labore laborum officia enim. Aute aliquip sunt ipsum ipsum ad voluptate commodo anim aute esse aliqua. Velit aliqua eiusmod Lorem reprehenderit culpa mollit labore ut exercitation.\r\n"
+										},
+										{
+											"index" : 2,
+											"picture" : "http://placehold.it/1400x650 	",
+											"name" : {
+												"first" : "Webster",
+												"last" : "Bauer"
+											},
+											"date" : 1399991897236,
+											"email" : "webster.bauer@undefined.biz",
+											"titre" : "excepteur officia dolore aliquip magna qui proident",
+											"soustitre" : "ex tempor ex reprehenderit est id proident nulla duis irure",
+											"content" : "Veniam est consectetur id anim non cillum velit cupidatat ipsum. Ad sit laborum ex eiusmod irure qui commodo adipisicing anim aliqua enim. Sint qui eiusmod voluptate mollit consectetur cupidatat non incididunt nulla mollit duis id elit. Irure quis ea cillum sunt elit culpa qui nisi deserunt sunt duis eu ex nulla. Nisi excepteur exercitation reprehenderit incididunt nostrud id anim magna ullamco aliquip proident eu tempor. Nisi est nostrud anim voluptate duis dolore ut dolore enim do reprehenderit fugiat.\r\nConsequat elit esse nisi consectetur excepteur eiusmod. Laboris voluptate pariatur nostrud dolore nisi adipisicing id mollit. Laborum adipisicing enim cillum ut id irure esse duis.\r\nEiusmod veniam ullamco irure laborum. Deserunt irure ad aliquip in officia commodo aliqua aliqua aliqua et. Sint ipsum velit eiusmod laborum nostrud ea id occaecat non enim deserunt exercitation magna. Adipisicing enim aliqua deserunt cillum aliquip amet ea fugiat. Ipsum culpa nulla cupidatat eiusmod aliqua et enim aliquip minim ad. Anim magna veniam veniam eu Lorem qui enim sit irure.\r\n"
+										} ],
 
-				getPosts : function() {
-					return factory.posts;
-				},
+								getPosts : function() {
+									return factory.posts;
+								},
 
-				getPost : function(id) {
-					var post = {};
-					angular.forEach(factory.posts, function(value, key) {
-						if (value.index == id) {
-							post = value;
-						}
-					});
-					return post;
-				},
+								getPost : function(id) {
+									var post = {};
+									angular.forEach(factory.posts, function(
+											value, key) {
+										if (value.index == id) {
+											post = value;
+										}
+									});
+									return post;
+								},
 
-			}
-			return factory;
+							}
+							return factory;
 
-		});
-		
+						});
+
 		app.factory('TemplatesFactory', function() {
 			var factory = {
-			        templates: [ { name: 'homeheader', url: 'partial/headerHome.html'},
-			    			      { name: 'postheader', url: 'partial/headerPost.html'} ],
-			    	template: { name: 'homeheader', url: 'partial/headerHome.html'},
-			    	getTemplates: function() {
-						return factory.templates;
-					},
-					getTemplate: function(){
-						return factory.template;
-					},
-					setTemplate: function(namee,urll){
-						
-						return { name: namee, url: urll};
-					}
-			    		    };
-		    return factory;
+				templates : [ {
+					name : 'homeheader',
+					url : 'partial/headerHome.html'
+				}, {
+					name : 'postheader',
+					url : 'partial/headerPost.html'
+				} ],
+				template : {
+					name : 'homeheader',
+					url : 'partial/headerHome.html',
+					id : 0
+				},
+				ui : { direction : ''},
+				getTemplates : function() {
+					return factory.templates;
+				},
+				getTemplate : function() {
+					return factory.template;
+				},
+				getDirection : function(){
+					return factory.ui.direction;
+				}
+
+			};
+			return factory;
 		});
 
-		app.controller('HomeCtrl',function ($scope,PostFactory){
-			$scope.posts=PostFactory.getPosts();
-		
-		}); 
-		
-		app.controller('PostCtrl',function($scope,PostFactory,$routeParams,TemplatesFactory){
-			$scope.post = PostFactory.getPost($routeParams.id);
+		app.controller('HomeCtrl', function($scope, PostFactory,$timeout) {
+			$timeout(function(){
+			$scope.posts = PostFactory.getPosts();				
+			},100);
+
+		});
+
+		app.controller('PostCtrl', function($scope, PostFactory, $routeParams,
+				TemplatesFactory,$timeout) {
+			$timeout(function(){
+			$scope.template = TemplatesFactory.getTemplate();
 			$scope.templates = TemplatesFactory.getTemplates();
-			$scope.template = { name: 'homeheader', url: 'partial/headerHome.html'};
+			$scope.post = PostFactory.getPost($routeParams.id);
+			},100);
+
+		});
+
+		app.controller('TemplateCtrl', function($scope, PostFactory,
+				TemplatesFactory,$timeout,$window,$route) {
+			$scope.ui = TemplatesFactory.getDirection;
+			
+			$timeout(function(){
+			$scope.templates = TemplatesFactory.getTemplates();
+			$scope.template = TemplatesFactory.template;
+			},100);
+
+			$scope.$on("$routeChangeSuccess",function(event,next,current){
+				if($window.location.hash == '#/'){
+					$scope.ui.back = false;
+				}else{
+					$scope.ui.back = true;
+				}
+				$timeout(function(){
+					$scope.ui.direction = 'left';
+					$scope.back = function(){
+						$scope.ui.direction = 'right';
+						//$window.history.back();
+					}
+				},1000)
+			});
+			
+			
+			
+			console.log($scope);
 		});
 		
-		app.controller('TemplateCtrl',function($scope,PostFactory,TemplatesFactory){
-			console.log(TemplatesFactory);
-			$scope.templates = TemplatesFactory.getTemplates();
-			$scope.template =  TemplatesFactory.template;
-			$scope.setTemplate = function(url){
-				TemplatesFactory.template.url = url;
-				return url;
-			};
-		})
+	
+
+		
 	</script>
 
 </body>
