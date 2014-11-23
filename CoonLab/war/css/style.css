@@ -18,7 +18,7 @@
 .slide.left.ng-enter-active {
     left: 0;
 }
-.slide.left.ng-leave {
+.slide.left.ng-leave.header {
     left: 0;
 }
 .slide.left.ng-leave-active {
@@ -28,7 +28,7 @@
 .slide.right.ng-enter {
     left: -100%;
 }
-.slide.right.ng-enter-active {
+.slide.right.ng-enter-active{
     left: 0;
 }
 .slide.right.ng-leave {
